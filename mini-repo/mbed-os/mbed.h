@@ -91,7 +91,7 @@ public:
 // mbed projects that it's cheap to include preemptively.
 class DigitalOut {
 public:
-    explicit DigitalOut(PinName, int value = 0) : _v(value) {}
+    explicit DigitalOut(PinName, int value = 0) : _v(value) {}//constructor
     void write(int v) { _v = v; }
     int read() const { return _v; }
     DigitalOut& operator=(int v) { write(v); return *this; }

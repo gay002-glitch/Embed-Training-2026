@@ -33,43 +33,53 @@ public:
 
     public:
     BNO055(I2C &i2c, uint8_t addr) noexcept; // Constructor taking in i2c object and address
-
+    //done
     BNO055(I2C &i2c, uint8_t addr, PinName p_reset) noexcept; // Overloaded to take a specific reset pin 
-                                                              // Implement both of these in the cpp
+    //done                                                         // Implement both of these in the cpp
 
     void init() noexcept; // Initialize the BNO055    
-
+    //done
     void reset() noexcept; // Quickly reset the BNO055
+    //done
 
+    
     /** Get Accel data
      * @param double type of 3D data address
      */
     void get_accel(BNO055_VECTOR_TypeDef *la);
+    //done
 
     /** Get Gyro data
      * @param double type of 3D data address
      */
     void get_gyro(BNO055_VECTOR_TypeDef *gr);
 
+    
     /** Change fusion mode
       * @param fusion mode
       * @return none
       */
     void change_fusion_mode(uint8_t mode);
+    //done
 
     IMU::EulerAngles read() override;
 
     IMU::EulerAngles getImuAngles() override;
 
+
+
+
     /** Get Quaternion XYZ&W
      * @param int16_t type of 4D data address
      */
     void get_quaternion(BNO055_QUATERNION_TypeDef *qua);
+    //done
 
     /** Get Angular position from quaternion
      *  @param double type of 3D data address
      */
     void get_angular_position_quat(IMU::EulerAngles *an_pos);
+    //done
 
 protected:
 
@@ -90,4 +100,9 @@ private:
 // Quaternion data registers
 #define BNO055_QUATERNION_W_LSB 0x20
 
+#define SYS_TRIGGER 0x3F
+#define GYR_DATA_X_LSB 0x14
+#define ACC_DATA_X_LSB 0x08
+#define OPR_MODE 0x3D
+#define PWR_MODE 0x3E
 #endif
